@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="FirstTask.AddPlacePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FirstTask"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+     
+    
+    <StackPanel>
+        <TextBlock Style="{StaticResource MyTextBlockStyle}">Name:</TextBlock>
+        <TextBox x:Name="NameBox" Text="{Binding Place.Name, Mode=TwoWay}"></TextBox>
+
+        <TextBlock Style="{StaticResource MyTextBlockStyle}">Address:</TextBlock>
+        <TextBox x:Name="AddressBox" Text="{Binding Place.Address, Mode=TwoWay}"></TextBox>
+
+        <TextBlock Style="{StaticResource MyTextBlockStyle}">Lat:</TextBlock>
+        <TextBox x:Name="LatitudeBox" Text="{Binding Place.Latitude, Mode=TwoWay}"></TextBox>
+
+        <TextBlock Style="{StaticResource MyTextBlockStyle}">Lon:</TextBlock>
+        <TextBox x:Name="LongitudeBox" Text="{Binding Place.Longitude, Mode=TwoWay}"></TextBox>
+
+        <CheckBox x:Name="HasWifiBox" IsChecked="{Binding Place.HasWifi, Mode=TwoWay}">Has Wifi</CheckBox>
+    </StackPanel>
+</Page>
