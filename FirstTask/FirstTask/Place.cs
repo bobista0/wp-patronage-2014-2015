@@ -34,6 +34,8 @@ namespace FirstTask
 			}
 		}
 
+		
+
 		private double _latitude;
 		public double Latitude
 		{
