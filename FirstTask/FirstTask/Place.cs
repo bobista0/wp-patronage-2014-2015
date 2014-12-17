@@ -8,16 +8,30 @@ namespace FirstTask
 {
 	public class Place : INotifyPropertyChanged
 	{
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		private void NotifyPropertyChanged(String info)
+		{
+			if (PropertyChanged != null)
+			{
+				PropertyChanged(this, new PropertyChangedEventArgs(info));
+			}
+		}
+
 		private string _name;
 		public string Name
 		{
 			get
 			{
-				return _name;
+				return this._name;
 			}
 			set
 			{
-				_name = value;
+				if (value != this._name)
+				{
+					this._name = value;
+					NotifyPropertyChanged("Name");
+				}
 			}
 		}
 
@@ -26,26 +40,32 @@ namespace FirstTask
 		{
 			get
 			{
-				return _address;
+				return this._address;
 			}
 			set
 			{
-				_address = value;
+				if (value != this._address)
+				{
+					this._address = value;
+					NotifyPropertyChanged("Address");
+				}
 			}
 		}
-
-		
 
 		private double _latitude;
 		public double Latitude
 		{
 			get
 			{
-				return _latitude;
+				return this._latitude;
 			}
 			set
 			{
-				_latitude = value;
+				if (value != this._latitude)
+				{
+					this._latitude = value;
+					NotifyPropertyChanged("Latitude");
+				}
 			}
 		}
 
@@ -54,11 +74,15 @@ namespace FirstTask
 		{
 			get
 			{
-				return _longitude;
+				return this._longitude;
 			}
 			set
 			{
-				_longitude = value;
+				if (value != this._longitude)
+				{
+					this._longitude = value;
+					NotifyPropertyChanged("Longitude");
+				}
 			}
 		}
 
@@ -67,21 +91,21 @@ namespace FirstTask
 		{
 			get
 			{
-				return _hasWifi;
+				return this._hasWifi;
 			}
 			set
 			{
-				_hasWifi = value;
+				if (value != this._hasWifi)
+				{
+					this._hasWifi = value;
+					NotifyPropertyChanged("HasWifi");
+				}
 			}
 		}
 
 		public override string ToString()
 		{
-			string format = "{" + Name + "}, " + "{" + Address + "}";
-
-			return format;
+			return String.Format("{0}, {1}", Name, Address);
 		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
 	}
 }

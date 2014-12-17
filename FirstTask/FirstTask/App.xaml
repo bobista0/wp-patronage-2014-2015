@@ -4,11 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FirstTask">
 
-    <Application.Resources>
-        <Style TargetType="TextBlock" x:Key="MyTextBlockStyle">
-            <Setter Property="FontSize" Value="24" />
-        </Style>
-    </Application.Resources>
+	<Application.Resources>
+		<Style TargetType="TextBlock" x:Key="MyTextBlockStyle">
+			<Setter Property="FontSize" Value="24" />
+		</Style>
+	</Application.Resources>
 
 
 </Application>
