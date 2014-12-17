@@ -74,7 +74,7 @@ namespace FirstTask
 
 			Geoposition pos = await geo.GetGeopositionAsync();
 
-			this.DataContext = new AddPlacePage()
+			this.DataContext = this;
 			{
 				Place = new Place()
 				{
@@ -85,7 +85,7 @@ namespace FirstTask
 					Latitude = pos.Coordinate.Point.Position.Latitude,
 					Longitude = pos.Coordinate.Point.Position.Longitude,
 					HasWifi = false,
-				}
+				};
 			};
 		}
 	}
