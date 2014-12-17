@@ -21,16 +21,14 @@ using System.ComponentModel;
 
 namespace FirstTask
 {
-
 	/// <summary>
 	/// An empty page that can be used on its own or navigated to within a Frame.
 	/// </summary>
 	public sealed partial class AddPlacePage : Page, INotifyPropertyChanged
 	{
-		Geolocator geo = null;
-		private double _currentLatitude;
-		private double _currentLongitude;
-
+		private Geolocator geo = null;
+		//private double _currentLatitude;
+		//private double _currentLongitude;
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		private void NotifyPropertyChanged(String info)
@@ -50,7 +48,7 @@ namespace FirstTask
 			}
 			set
 			{
-				if(value != this._place)
+				if (value != this._place)
 				{
 					this._place = value;
 					NotifyPropertyChanged("Place");
@@ -60,22 +58,8 @@ namespace FirstTask
 
 		public AddPlacePage()
 		{
-
 			this.InitializeComponent();
 			this.NavigationCacheMode = NavigationCacheMode.Required;
-			this.DataContext = new
-			{
-				Place = new Place()
-				{
-					Name = "Technopark",
-					Address = "",
-					//Latitude = 60d,
-					//Longitude = -13.5d,
-					Latitude = _currentLatitude,
-					Longitude = _currentLongitude,
-					HasWifi = false,
-				}
-			};
 		}
 
 		/// <summary>
@@ -89,8 +73,20 @@ namespace FirstTask
 				geo = new Geolocator();
 
 			Geoposition pos = await geo.GetGeopositionAsync();
-			_currentLatitude = pos.Coordinate.Point.Position.Latitude;
-			_currentLongitude = pos.Coordinate.Point.Position.Longitude;
+
+			this.DataContext = new AddPlacePage()
+			{
+				Place = new Place()
+				{
+					Name = "Technopark",
+					Address = "",
+					//Latitude = 60d,
+					//Longitude = -13.5d,
+					Latitude = pos.Coordinate.Point.Position.Latitude,
+					Longitude = pos.Coordinate.Point.Position.Longitude,
+					HasWifi = false,
+				}
+			};
 		}
 	}
 }
