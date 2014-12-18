@@ -26,12 +26,9 @@ namespace FirstTask
 	/// </summary>
 	public sealed partial class AddPlacePage : Page, INotifyPropertyChanged
 	{
-		private Geolocator geo = null;
-		//private double _currentLatitude;
-		//private double _currentLongitude;
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		private void NotifyPropertyChanged(String info)
+		private void NotifyPropertyChanged(string info)
 		{
 			if (PropertyChanged != null)
 			{
@@ -60,6 +57,20 @@ namespace FirstTask
 		{
 			this.InitializeComponent();
 			this.NavigationCacheMode = NavigationCacheMode.Required;
+
+			DataContext = this;
+			{
+				Place = new Place()
+				{
+					Name = "Technopark",
+					Address = "",
+					Latitude = 0.00d,
+					Longitude = 0.00d,
+					HasWifi = false,
+				};
+			};
+
+			Place.GetCurrentLocation();
 		}
 
 		/// <summary>
@@ -67,26 +78,9 @@ namespace FirstTask
 		/// </summary>
 		/// <param name="e">Event data that describes how this page was reached.
 		/// This parameter is typically used to configure the page.</param>
-		protected async override void OnNavigatedTo(NavigationEventArgs e)
+		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
-			if (geo == null)
-				geo = new Geolocator();
-
-			Geoposition pos = await geo.GetGeopositionAsync();
-
-			this.DataContext = this;
-			{
-				Place = new Place()
-				{
-					Name = "Technopark",
-					Address = "",
-					//Latitude = 60d,
-					//Longitude = -13.5d,
-					Latitude = pos.Coordinate.Point.Position.Latitude,
-					Longitude = pos.Coordinate.Point.Position.Longitude,
-					HasWifi = false,
-				};
-			};
+			
 		}
 	}
 }

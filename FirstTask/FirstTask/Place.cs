@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
+using System.ComponentModel;
 
 namespace FirstTask
 {
 	public class Place : INotifyPropertyChanged
 	{
+		private Geolocator geo = null;
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		private void NotifyPropertyChanged(String info)
@@ -16,6 +19,16 @@ namespace FirstTask
 			{
 				PropertyChanged(this, new PropertyChangedEventArgs(info));
 			}
+		}
+
+		public async void GetCurrentLocation()
+		{
+			if (geo == null)
+				geo = new Geolocator();
+
+			Geoposition pos = await geo.GetGeopositionAsync();
+			Latitude = pos.Coordinate.Point.Position.Latitude;
+			Longitude = pos.Coordinate.Point.Position.Longitude;
 		}
 
 		private string _name;
