@@ -10,6 +10,8 @@ namespace FirstTask
 {
 	public class Place : INotifyPropertyChanged
 	{
+		public string id { get; set; }
+
 		private Geolocator geo = null;
 		public event PropertyChangedEventHandler PropertyChanged;
 
