@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirstTask.Service;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -72,6 +73,7 @@ namespace FirstTask
 
 				// Place the frame in the current Window
 				Window.Current.Content = rootFrame;
+				new NavigationService().RegisterRootFrame(rootFrame);
 			}
 
 			if (rootFrame.Content == null)
@@ -92,7 +94,7 @@ namespace FirstTask
 				// When the navigation stack isn't restored navigate to the first page,
 				// configuring the new page by passing required information as a navigation
 				// parameter
-				if (!rootFrame.Navigate(typeof(AddPlacePage), e.Arguments))
+				if (!rootFrame.Navigate(typeof(PlacesListPage), e.Arguments))
 				{
 					throw new Exception("Failed to create initial page");
 				}

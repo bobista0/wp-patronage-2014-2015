@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FirstTask.ViewModel;
+using FirstTask.Body;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,6 +19,7 @@ using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using System.ComponentModel;
 using Windows.UI.Popups;
+using Windows.Phone.UI.Input;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
@@ -32,7 +35,7 @@ namespace FirstTask
 			this.InitializeComponent();
 			this.NavigationCacheMode = NavigationCacheMode.Required;
 
-			this.DataContext = new ViewModel()
+			this.DataContext = new AddPlaceViewModel()
 			{
 				Place = new Place()
 				{
@@ -54,21 +57,5 @@ namespace FirstTask
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
 		}
-
-		private void IsNameFieldEmpty(object sender, TextChangedEventArgs e)
-		{
-			if (NameBox.Text.ToString() == String.Empty)
-				AddButton.IsEnabled = false;
-			else
-				AddButton.IsEnabled = true;
-		}
-
-		//private async void IsNameFieldEmpty(FrameworkElement sender, DataContextChangedEventArgs args)
-		//{
-		//	if(NameBox.Text.ToString() == String.Empty)
-		//		AddButton.IsEnabled = false;
-		//	else
-		//		AddButton.IsEnabled = true;
-		//}
 	}
 }

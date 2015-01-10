@@ -12,7 +12,8 @@
 
 	<StackPanel>
 		<TextBlock Style="{StaticResource MyTextBlockStyle}">Name:</TextBlock>
-		<TextBox TextChanged="IsNameFieldEmpty" x:Name="NameBox" Text="{Binding Place.Name, Mode=TwoWay}"></TextBox>
+		<TextBox x:Name="NameBox" Text="{Binding Place.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+		</TextBox>
 
 		<TextBlock Style="{StaticResource MyTextBlockStyle}">Address:</TextBlock>
 		<TextBox x:Name="AddressBox" Text="{Binding Place.Address, Mode=TwoWay}"></TextBox>
@@ -29,14 +30,15 @@
 		<CommandBar>
 			<AppBarButton
 				Command="{Binding AddCommand}"
+				IsEnabled="{Binding IsAddAvailable}"
 				x:Name="AddButton"
 				Icon="Add"
 				Label="Add" />
 			<AppBarButton
 				Command="{Binding ClearCommand}"
 				x:Name="ClearButton"
-				Icon="Clear"
-				Label="Clear" />
+				Icon="Cancel"
+				Label="Cancel" />
 		</CommandBar>
 	</Page.BottomAppBar>
 </Page>

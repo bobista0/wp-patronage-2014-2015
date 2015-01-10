@@ -8,6 +8,10 @@
 		<Style TargetType="TextBlock" x:Key="MyTextBlockStyle">
 			<Setter Property="FontSize" Value="24" />
 		</Style>
+		<Style TargetType="ListViewItem" x:Key="MyListViewPlaceStyle">
+			<Setter Property="HorizontalAlignment" Value="Stretch" />
+			<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+		</Style>
 	</Application.Resources>
 
 
